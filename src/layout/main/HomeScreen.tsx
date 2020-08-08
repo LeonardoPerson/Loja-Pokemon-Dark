@@ -1,32 +1,38 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, ChangeEvent} from 'react';
 import {baseURL} from '../../Api';
 import Product from './Product';
 //------------------------------------------------------------------------
 //Define o tipo de pokémon, pode ser alterado para outros tipos
 //e o retorno ocorrerá normalmente
 const tipoPokemon = "dark";
+
+interface Poke {
+    name: string;
+    price: number;
+}
+
 //------------------------------------------------------------------------  
 function HomeScreen(){          
     //recebe o array inicial
-    const [pokemon, setPokemon] = useState([]); 
+    const [pokemon, setPokemon] = useState<Array<Poke>>([]); 
     //Autoriza a exibição de pokémon na tela
     const [loadingApi, setloadingApi] = useState(true); 
     //Valor digitado no campo de busca
     const [searchTerm, setSearchTerm] = useState(""); 
     //recebe também o array inicial mas tem a condição de somente apresentar na tela o que for digitado na busca
-    const [searchResults, setSearchResults] = useState([]); 
+    const [searchResults, setSearchResults] = useState<Array<Poke>>([]); 
     //Array utilizado no carrinho de compras para adicionar, somar e iterar os itens de compra
-    const [cart, setCart] = useState([]);  
+    const [cart, setCart] = useState<Array<Poke>>([]);  
     //Flag que informa se o botão para finalizar foi clicado
     const [final, setFinal] = useState(false);
     //Variável auxiliar para armazenar inicialmente o array da Api
-    const listaAuxiliar = [];    
+    const listaAuxiliar: Array<Poke> = [];    
     
     //Extraindo a baseURL da api e armazenando em variáveis
     useEffect(() => {
         fetch(baseURL)
             .then((response) => response.json())
-            .then((data) => data.results.map((item) => {
+            .then((data) => data.results.map((item: Response) => {
                 fetch(item.url)
                 .then((response) => response.json())
                 .then((allpokemon) => {    
@@ -44,7 +50,7 @@ function HomeScreen(){
     }, []);  
 
     //Capturando a palavra digitada no campo de busca e armazenado-a em searchTerm
-    const handleChange = event => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);        
     };
 
@@ -58,13 +64,13 @@ function HomeScreen(){
     }, [searchTerm])    
    
     //Adicionando o pokemon ao carrinho conforme onClick "Adicionar ao carrinho"
-    const addToCart = index => {
+    const addToCart = (index: number) => {
         setFinal(false);      
         setCart(cart.concat(searchResults[index]));        
       }; 
 
     //Removendo elementos do carrinho
-    const removeToCart = index => {     
+    const removeToCart = (index: number) => {     
         cart.splice(index, 1)     
         setCart(cart.slice(0));        
     }
@@ -74,7 +80,7 @@ function HomeScreen(){
         if(cart.length === 0){ //carro sem elementos
             setFinal(false); 
         }else{                 //carro com elementos
-            const limpaCarro = [];
+            const limpaCarro: Array<Poke> = [];
             setCart(limpaCarro);
             setFinal(true); //Autoriza exibição de frase de agradecimento
         }       

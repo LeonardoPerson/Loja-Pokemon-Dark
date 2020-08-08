@@ -4,7 +4,7 @@ import React from 'react';
 const price = 75;
 
 //Função que renderiza o conjunto de pokémon na tela, assim como os itens do carrinho
-const Product = props => {
+const Product = (props: { product: any; children: any; }) => {
     const { product, children } = props;
     return (                  
         <div className="pokemon">            
