@@ -6,9 +6,20 @@ import Product from './Product';
 //e o retorno ocorrerá normalmente
 const tipoPokemon = "dark";
 
-interface Poke {
+//Especificando o tipo do array de pokémon na função HomeScreen,
+//conforme exigência do typescript
+export interface Poke {
+    id: string;
     name: string;
     price: number;
+    sprites: {
+        front_default: string;
+    }
+    types: [{
+            type: {
+                name: string;
+            }    
+    }]
 }
 
 //------------------------------------------------------------------------  
