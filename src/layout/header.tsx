@@ -2,8 +2,10 @@ import React from 'react';
 
 function Header(){
     return (
-        <header className="header">                  
-                Loja Pokémon Dark              
+        <header className="header">  
+                <div className="brand">                
+                    Loja Pokémon Dark  
+                </div>            
         </header>     
     )
 }

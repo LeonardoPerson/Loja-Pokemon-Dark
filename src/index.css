@@ -46,11 +46,11 @@ body{
   .main-carrinho{
     border-top: 1px solid rgb(97, 104, 112);
   }
-
-
+  .brand{
+    font-size: 2rem;
+    margin-left: 20%;
+  }
  }
-
-
 
 /*Campo de busca--------------------------------------------------------*/
 .main-search{
@@ -111,7 +111,7 @@ body{
 
 .pokemon-carregando{
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(255, 255, 255);  
 }
@@ -223,11 +223,15 @@ body{
   color: rgb(255, 255, 255);
   display: flex;
   align-items: center; /*Alinhamento vertical*/  
-  padding-left: 10%;
-  font-size: 3rem;
+  justify-content: center;
+  font-size: 2.5rem;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 900;
   font-style: normal;
+}
+
+.brand{
+  margin-right: 20%;
 }
 
 
