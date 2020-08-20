@@ -46,11 +46,11 @@ function HomeScreen(){
             .then((data) => data.results.map((item: Response) => {
                 fetch(item.url)
                 .then((response) => response.json())
-                .then((allpokemon) => {    
-                    if(allpokemon.types[0].type.name === tipoPokemon){                  
+                .then((allpokemon) => {                    
+                    if(allpokemon.types[0].type.name === tipoPokemon){                 
                     listaAuxiliar.push(allpokemon);  
                     }       
-                });                               
+                }).catch(err => err.text);                               
                 setPokemon(listaAuxiliar);  
                 setSearchResults(listaAuxiliar);  
                 setTimeout(() => {

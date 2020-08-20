@@ -5,7 +5,7 @@ import HomeScreen from './HomeScreen';
 function Main(){
     return (         
             <main className="main">                
-                    {/*Compomente Routes contém as telas HomeScreen e ProductScreen*/}
+                    {/*Compomente Routes contém as telas HomeScreen*/}
                 <Switch>
                     <Route path="/" exact={true} component={HomeScreen} /> 
                 </Switch>                                
