@@ -13,6 +13,9 @@ Só existem Pokémon do tipo dark nessa loja.
 Abaixo constam os produtos no carrinho com botão para remoção e no final um botão para finalizar a compra. 
 Na parte superior o valor total é calculado. Após clicar em finalizar, um agradecimento é exibido. <br/>
 
-<img src="public/carrinho.png" />     <img src="public/agradecimento.png" />      <img src="public/darkresponsivo.png" />
+<img src="public/carrinho.png" />     <img src="public/agradecimento.png" /> <br/>
+
+Segue a versão responsiva:
+<img src="public/darkresponsivo.png" />
 
 
