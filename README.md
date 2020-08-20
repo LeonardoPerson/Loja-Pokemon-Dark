@@ -14,7 +14,6 @@ Na parte superior o valor total é calculado. Após clicar em finalizar, um agra
 
 <img src="public/carrinho.png" />     <img src="public/agradecimento.png" /> <br/>
 
-A aplicação possui recursos do display flex e media query para que seja responsiva, conforme imagem abaixo. <br/>
 Na versão responsiva, o carrinho foi movido para a parte inferior:<br/><br/>
 <img src="public/darkresponsivo.png" />
 
