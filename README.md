@@ -15,7 +15,7 @@ Na parte superior o valor total é calculado. Após clicar em finalizar, um agra
 
 <img src="public/carrinho.png" />     <img src="public/agradecimento.png" /> <br/>
 
-Segue a versão responsiva, o carrinho foi movido para a parte inferior:<br/>
+Segue a versão responsiva, o carrinho foi movido para a parte inferior:<br/><br/>
 <img src="public/darkresponsivo.png" />
 
 
