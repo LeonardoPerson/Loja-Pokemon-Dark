@@ -50,6 +50,13 @@ body{
     font-size: 2rem;
     margin-left: 20%;
   }
+
+  .footer{
+    display: flex;
+    padding-left: 20%;  
+    align-items: center;
+    justify-content: center;
+  }
  }
 
 /*Campo de busca--------------------------------------------------------*/
@@ -240,9 +247,9 @@ body{
   background-color: rgb(49, 179, 166);
   color:  rgb(255, 255, 255);
   display: flex;
-
-  padding-left: 40%;
+  padding-right: 18%;  
   align-items: center;
+  justify-content: center;
 }
 
 
