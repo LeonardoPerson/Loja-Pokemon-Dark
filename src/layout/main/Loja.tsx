@@ -1,13 +1,8 @@
 import React, {useState, useEffect, ChangeEvent} from 'react';
-import {baseURL} from '../../Api';
 import Product from './Product';
-//------------------------------------------------------------------------
-//Define o tipo de pokémon, pode ser alterado para outros tipos
-//e o retorno ocorrerá normalmente
-const tipoPokemon = "dark";
+import Api from '../../Api'
+/////////////////////////////////////////////////////////////////////////////
 
-//Especificando o tipo do array de pokémon na função HomeScreen,
-//conforme exigência do typescript
 export interface Poke {
     id: string;
     name: string;
@@ -22,43 +17,31 @@ export interface Poke {
     }]
 }
 
-//------------------------------------------------------------------------  
-function HomeScreen(){          
-    //recebe o array inicial
-    const [pokemon, setPokemon] = useState<Array<Poke>>([]); 
+///////////////////////////////////////////////////////////////////////////// 
+function Loja(){          
+    //Recebe o array inicial de pokémon
+    const [pokemon] = Api()
     //Autoriza a exibição de pokémon na tela
     const [loadingApi, setloadingApi] = useState(true); 
     //Valor digitado no campo de busca
     const [searchTerm, setSearchTerm] = useState(""); 
-    //recebe também o array inicial mas tem a condição de somente apresentar na tela o que for digitado na busca
+    //recebe também o array inicial mas tem a condição de somente apresentar 
+    //na tela o que for digitado na busca
     const [searchResults, setSearchResults] = useState<Array<Poke>>([]); 
-    //Array utilizado no carrinho de compras para adicionar, somar e iterar os itens de compra
+    //Array utilizado no carrinho de compras para adicionar, somar e iterar 
+    //os itens de compra
     const [cart, setCart] = useState<Array<Poke>>([]);  
     //Flag que informa se o botão para finalizar foi clicado
     const [final, setFinal] = useState(false);
-    //Variável auxiliar para armazenar inicialmente o array da Api
-    const listaAuxiliar: Array<Poke> = [];    
+
+    //Abastecendo a loja com pokémon
+    useEffect(()=>{
+        setTimeout(() => {
+            setSearchResults(pokemon)
+            setloadingApi(false);
+        }, 4000);        
+    }, [])    
     
-    //Extraindo a baseURL da api e armazenando em variáveis
-    useEffect(() => {
-        fetch(baseURL)
-            .then((response) => response.json())
-            .then((data) => data.results.map((item: Response) => {
-                fetch(item.url)
-                .then((response) => response.json())
-                .then((allpokemon) => {                    
-                    if(allpokemon.types[0].type.name === tipoPokemon){                 
-                    listaAuxiliar.push(allpokemon);  
-                    }       
-                }).catch(err => err.text);                               
-                setPokemon(listaAuxiliar);  
-                setSearchResults(listaAuxiliar);  
-                setTimeout(() => {
-                    setloadingApi(false);
-                    }, 5000);                 
-            })
-            );           
-    }, []);  
 
     //Capturando a palavra digitada no campo de busca e armazenado-a em searchTerm
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +55,7 @@ function HomeScreen(){
           if(results){
             setSearchResults(results);
           }                                                 
-    }, [searchTerm])    
+    }, [searchTerm])
    
     //Adicionando o pokemon ao carrinho conforme onClick "Adicionar ao carrinho"
     const addToCart = (index: number) => {
@@ -101,10 +84,10 @@ function HomeScreen(){
     const calculatePrice = () => {
         return cart.reduce((price, product) => price + product.price, 0);
     };   
-       
-    //---------------------------------------------------------------------
+   
+    //-------------------------------------------------------------------------
     return (
-        <div className="main-tela"> 
+        <div className="main-tela">        
         {/*Campo de busca-------------------------------------------------*/}
             <div className="main-search">
                 <form className="search">
@@ -117,12 +100,13 @@ function HomeScreen(){
                         />                    
                 </form>        
             </div> 
+    
 
-            {/*Renderização de produtos pokémon conforme importação de Product-------------------------------------------------*/}
+            {/*Produtos --------------------------------------------------------------------------*/}
             <div className="main-pokemon">
                 <div className="pokemons">
                 {
-                    loadingApi? <div className="pokemon-carregando">Procurando pokémon {tipoPokemon} ...</div> : 
+                    loadingApi? <div className="pokemon-carregando">Procurando pokémon {} ...</div> : 
                     searchResults.map((product, index) => (                        
                         <div className="lista-compras" key={product.name}>                        
                             <Product product={product} key={index} >
@@ -134,7 +118,7 @@ function HomeScreen(){
                 </div>              
             </div> 
 
-             {/*Renderização do carrinho conforme importação do Product -------------------------------------------------*/}
+             {/*Carrinho ------------------------------------------------------------------------------*/}
             <div className="main-carrinho">
                 <h3 className="titulo-carrinho">CARRINHO</h3>                   
                 <div className="total">Total: R${calculatePrice()}</div>                    
@@ -153,4 +137,4 @@ function HomeScreen(){
     )
 }
 
-export default HomeScreen;
+export default Loja;

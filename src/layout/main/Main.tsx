@@ -1,13 +1,13 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import HomeScreen from './HomeScreen';
+import Loja from './Loja';
 
-function Main(){
+const Main = () => {
     return (         
             <main className="main">                
                     {/*Compomente Routes contém as telas HomeScreen*/}
                 <Switch>
-                    <Route path="/" exact={true} component={HomeScreen} /> 
+                    <Route path="/" exact={true} component={Loja} /> 
                 </Switch>                                
             </main>  
     )

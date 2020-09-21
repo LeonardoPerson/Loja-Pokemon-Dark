@@ -57,6 +57,10 @@ body{
     align-items: center;
     justify-content: center;
   }
+
+  .main-pokemon{
+    height: 100%;
+  }
  }
 
 /*Campo de busca--------------------------------------------------------*/
