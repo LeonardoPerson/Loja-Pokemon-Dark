@@ -16,5 +16,6 @@ Na parte superior o valor total é calculado. Após clicar em finalizar, um agra
 
 Na versão responsiva, o carrinho foi movido para a parte inferior:<br/><br/>
 <img src="public/darkresponsivo.png" />
+Obs.: Algumas imagens de pokémon não existem pelo repositório oriundo da api, nesse caso ocorrerá a substituição da imagem faltante por outra padrão.
 
 
